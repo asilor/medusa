@@ -18,6 +18,8 @@ COPY . .
 
 RUN npm run build
 
-RUN npm run predeploy
+RUN npm run telemetry
+
+RUN npm run migrate
 
 CMD ["npm", "run", "start"]
