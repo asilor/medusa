@@ -6,6 +6,10 @@ COPY package.json yarn.lock ./
 
 RUN yarn install
 
+RUN yarn build
+
+RUN medusa telemetry --disable
+
 RUN yarn predeploy
 
 COPY . .
