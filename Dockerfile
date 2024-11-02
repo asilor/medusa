@@ -8,10 +8,10 @@ RUN yarn install
 
 RUN yarn build
 
+COPY . .
+
 RUN medusa telemetry --disable
 
 RUN yarn predeploy
-
-COPY . .
 
 CMD ["yarn", "run", "start"]
