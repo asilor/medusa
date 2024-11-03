@@ -11,3 +11,4 @@ coverage
 medusa-db.sql
 package-lock.json
 /uploads
+README.md
