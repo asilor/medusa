@@ -13,7 +13,7 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
-    workerMode: process.env.WORKER_MODE || "server",
+    workerMode: process.env.WORKER_MODE === "worker" ? "worker" : "server",
   },
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
