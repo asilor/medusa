@@ -20,7 +20,13 @@ COPY . .
 
 RUN npm run build && npm run telemetry && npm run migrate
 
+FROM node:alpine
+
+COPY --from=build /app/.medusa/server ./
+
 ENV NODE_ENV=production
+
+RUN npm ci --omit=dev
 
 EXPOSE 9000
 
