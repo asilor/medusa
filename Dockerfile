@@ -20,7 +20,8 @@ RUN npm run build
 
 FROM node:alpine
 
-COPY --from=build /app/.medusa/server ./
+COPY --from=build /app/.medusa/server ./.medusa/server
+COPY --from=build /app/package.json ./
 
 RUN npm run telemetry
 
