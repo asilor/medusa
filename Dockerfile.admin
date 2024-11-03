@@ -15,7 +15,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build --admin-only
+RUN npm run build --admin-only && npm run telemetry
 
 FROM node:alpine
 
