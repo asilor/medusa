@@ -12,15 +12,19 @@ ARG REDIS_URL=${REDIS_URL}
 ARG DISABLE_MEDUSA_ADMIN=true
 ENV DISABLE_MEDUSA_ADMIN=true
 
-COPY package.json ./
+COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
 RUN npm run build && npm run telemetry && npm run migrate
 
-RUN npm prune --production
+FROM node:alpine
+
+COPY --from=build /app/.medusa/server ./
+
+RUN npm install --only=production
 
 ENV NODE_ENV=production
 
