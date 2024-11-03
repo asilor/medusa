@@ -18,15 +18,15 @@ COPY . .
 
 RUN npm run build
 
+RUN npm run telemetry
+
+RUN npm run migrate
+
 FROM node:alpine
 
 COPY --from=build /app/.medusa/server ./
 
 RUN npm install --only=production
-
-RUN npm run telemetry
-
-RUN npm run migrate
 
 ENV NODE_ENV=production
 
