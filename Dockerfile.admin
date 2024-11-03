@@ -23,6 +23,6 @@ COPY --from=build /app/.medusa/server/public/admin ./public
 
 RUN npm install -g http-server
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD ["http-server", "public", "-p", "80"]
+CMD ["http-server", "public", "-p", "3000"]
