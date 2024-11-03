@@ -18,9 +18,10 @@ RUN npm prune --production
 
 FROM node:alpine
 
-COPY --from=build /app/.medusa/server ./
-COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/.medusa/server/public/admin ./public
 
-ENV NODE_ENV=production
+RUN npm install -g serve
 
-CMD ["npm", "run", "start"]
+EXPOSE 80
+
+CMD ["serve", "-s", "public", "-l", "80"]
