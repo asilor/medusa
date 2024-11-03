@@ -20,13 +20,6 @@ COPY . .
 
 RUN npm run build && npm run telemetry && npm run migrate
 
-RUN npm prune --omit=dev
-
-FROM node:alpine
-
-COPY --from=build /app/.medusa/server ./
-COPY --from=build /app/node_modules ./node_modules
-
 ENV NODE_ENV=production
 
 EXPOSE 9000
