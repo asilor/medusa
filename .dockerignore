@@ -1,0 +1,13 @@
+node_modules
+.env
+/dist
+/build
+.DS_Store
+.idea
+coverage
+.medusa
+.cache
+./tsconfig.tsbuildinfo
+medusa-db.sql
+package-lock.json
+/uploads
