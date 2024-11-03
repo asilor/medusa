@@ -3,7 +3,7 @@
 .DS_Store
 /uploads
 /node_modules
-.package-lock.json
+package-lock.json
 
 .idea
 
