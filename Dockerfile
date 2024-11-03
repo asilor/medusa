@@ -10,7 +10,7 @@ ARG COOKIE_SECRET=${COOKIE_SECRET}
 ARG DATABASE_URL=${DATABASE_URL}
 ARG REDIS_URL=${REDIS_URL}
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 RUN npm install
 
