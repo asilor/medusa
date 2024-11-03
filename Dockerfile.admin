@@ -17,8 +17,6 @@ COPY . .
 
 RUN npm run build --admin-only && npm run telemetry
 
-RUN npm prune --production
-
 FROM node:alpine
 
 COPY --from=build /app/.medusa/server/public/admin ./public
