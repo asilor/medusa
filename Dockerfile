@@ -19,11 +19,12 @@ COPY . .
 
 RUN npm run build && npm run telemetry && npm run migrate
 
+RUN npm prune --production
+
 FROM node:alpine
 
 COPY --from=build /app/.medusa/server ./
-
-RUN npm install --only=production
+COPY --from=build /app/node_modules ./node_modules
 
 ENV NODE_ENV=production
 
