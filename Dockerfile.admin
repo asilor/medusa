@@ -17,7 +17,7 @@ COPY . .
 
 RUN npm run build --admin-only && npm run telemetry
 
-FROM socialengine/nginx-spa
+FROM socialengine/nginx-spa:latest
 
 COPY --from=build /app/.medusa/server/public/admin ./app
 
