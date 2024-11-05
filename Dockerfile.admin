@@ -17,8 +17,10 @@ COPY . .
 
 RUN npm run build --admin-only && npm run telemetry
 
-FROM socialengine/nginx-spa:latest
+FROM node:alpine
 
-COPY --from=build /app/.medusa/server/public/admin ./app
+COPY --from=build /app/.medusa/server/public/admin ./public
 
-RUN chmod -R 777 /app
+RUN npm install -g serve
+
+CMD ["serve", "-s", "public", "-l", "3000"]
