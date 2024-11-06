@@ -17,10 +17,10 @@ COPY . .
 
 RUN npm run build --admin-only && npm run telemetry
 
-FROM node:alpine
+FROM nginx:alpine
 
-COPY --from=build /app/.medusa/server/public/admin ./public
+COPY --from=build /app/.medusa/server/public/admin /usr/share/nginx/html
 
-RUN npm install -g serve
+EXPOSE 80
 
-CMD ["serve", "-s", "public", "-l", "3000"]
+CMD ["nginx", "-g", "daemon off;"]
