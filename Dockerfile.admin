@@ -21,6 +21,6 @@ FROM nginx:alpine
 
 COPY --from=build /app/.medusa/server/public/admin /usr/share/nginx/html
 
-COPY admin.nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.admin.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
